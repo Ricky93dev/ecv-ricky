@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO — diperbarui oleh JS dari data.js -->
+  <title>Mochamad Ricky Araya — Portofolio Digital [NET_ID // 2026]</title>
+  <meta name="description" content="Portofolio digital Mochamad Ricky Araya, mahasiswa Sistem Informasi BSI. Web & Mobile Developer." />
+  <meta name="author" content="Mochamad Ricky Araya" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mochamad Ricky Araya — Portofolio Digital" />
+  <meta property="og:description" content="Portofolio digital Mochamad Ricky Araya, mahasiswa Sistem Informasi BSI." />
+  <meta property="og:image" content="assets/og-image.png" />
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#040711" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <!-- Google Fonts: Plus Jakarta Sans, Poppins & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Cyberpunk Interactive Audio Synthesizer Toggle & Matrix Rain Canvas -->
+  <canvas id="matrixCanvas" class="matrix-canvas" aria-hidden="true"></canvas>
+
+  <!-- Cybernetic Crosshair Cursor & Particle Trails -->
+  <div id="cyberCursorDot" class="cyber-cursor-dot" aria-hidden="true"></div>
+  <div id="cyberCursorRing" class="cyber-cursor-ring" aria-hidden="true"></div>
+
+  <!-- Top Gamer XP Scroll Indicator -->
+  <div class="xp-progress-container" aria-hidden="true">
+    <div class="xp-progress-bar" id="pixelXpBar">
+      <span class="xp-progress-tag" id="pixelXpText">EXP: 0%</span>
+    </div>
+  </div>
+
+  <!-- Cyberpunk Network Telemetry Ticker Bar -->
+  <div class="cyber-ticker" aria-hidden="true">
+    <div class="container cyber-ticker__inner">
+      <div class="cyber-ticker__left">
+        <span class="cyber-ticker__pulse"></span>
+        <span class="cyber-ticker__status">NC_NET: CONNECTED // ICE: ENCRYPTED // RELIC: OPERATIONAL</span>
+      </div>
+      <div class="cyber-ticker__right">
+        <!-- Audio Synth SFX Toggle -->
+        <button type="button" id="synthAudioToggle" class="synth-audio-btn" title="Aktifkan Cyberpunk Synth SFX (Web Audio API)">
+          <i data-lucide="volume-x" id="synthAudioIcon"></i>
+          <span id="synthAudioLabel">SFX: OFF</span>
+        </button>
+        <span class="cyber-ticker__coord">LOC: CIAMIS // LATENCY: 8ms</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Cyber Ambient Lighting & Night City Horizon Grid -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="bg-ambient__blob bg-ambient__blob--1"></div>
+    <div class="bg-ambient__blob bg-ambient__blob--2"></div>
+    <div class="bg-ambient__blob bg-ambient__blob--3"></div>
+    <div class="bg-ambient__pattern"></div>
+    <div class="bg-ambient__scan-beam"></div>
+    <div class="bg-ambient__cyber-grid"></div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="#" class="navbar__logo" aria-label="Ke atas halaman">
+        <span class="logo-bracket">[</span> RICKY_<span class="logo-highlight">ARAYA</span> <span class="logo-tag">// DEV</span> <span class="logo-bracket">]</span>
+      </a>
+      <nav class="navbar__menu" id="navMenu" aria-label="Menu utama">
+        <!-- dirender oleh JS -->
+      </nav>
+      <div class="navbar__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema terang/gelap" type="button" title="Ganti Tema">
+          <i data-lucide="sun" class="icon-sun"></i>
+          <i data-lucide="moon" class="icon-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Buka menu navigasi" aria-expanded="false" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO SECTION (Cyberpunk Edgerunners Showcase) ===== -->
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+        
+        <!-- Left: Text & Info -->
+        <div class="hero__text">
+          <div class="hero__status" id="heroStatus"></div>
+          <p class="hero__greeting" id="heroGreeting"></p>
+          <h1 class="hero__name glitch-target" id="heroName"></h1>
+          
+          <div class="terminal-exec-wrapper">
+            <div class="terminal-exec-header">
+              <span class="terminal-dot terminal-dot--red"></span>
+              <span class="terminal-dot terminal-dot--yellow"></span>
+              <span class="terminal-dot terminal-dot--green"></span>
+              <span class="terminal-title">BASH // NETRUNNER_SHELL.EXE</span>
+              <span class="terminal-badge">LIVE_REPL</span>
+            </div>
+            <div class="terminal-exec-body">
+              <div class="terminal-prompt-line">
+                <span class="terminal-chevron">&gt;</span>
+                <span class="terminal-command">SYSTEM_EXEC:</span>
+                <span id="heroHeadline" class="typed-text"></span>
+                <span class="terminal-cursor" aria-hidden="true">_</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="hero__summary" id="heroSummary"></p>
+          
+          <div class="hero__cta" id="heroCta"></div>
+
+          <!-- Quick Cyberware Overclock Trigger -->
+          <div class="hero__cyber-action">
+            <button type="button" class="btn-sande-trigger" id="sandeTriggerBtn" title="Picukan Sandevistan Overdrive!">
+              <i data-lucide="zap"></i>
+              <span>TEST SANDEVISTAN // OVERDRIVE</span>
+            </button>
+            <span class="cyber-hint-text">Klik kartu atau tombol untuk memicu akselerasi!</span>
+          </div>
+        </div>
+
+        <!-- Right: Holographic Character Card with Sandevistan Ghost Trails -->
+        <div class="hero__character-wrapper" id="charWrapper">
+          
+          <!-- Orbiting Floating Badge 1 (Top Left) -->
+          <div class="floating-badge floating-badge--1" id="floatBadge1">
+            <div class="floating-badge__icon floating-badge__icon--blue">
+              <i data-lucide="code-2"></i>
+            </div>
+            <div class="floating-badge__text">
+              <span class="floating-badge__label">CLASS</span>
+              <span class="floating-badge__val">Full-Stack Dev</span>
+            </div>
+          </div>
+
+          <!-- Orbiting Floating Badge 2 (Top Right) -->
+          <div class="floating-badge floating-badge--2" id="floatBadge2">
+            <div class="floating-badge__icon floating-badge__icon--yellow">
+              <i data-lucide="zap"></i>
+            </div>
+            <div class="floating-badge__text">
+              <span class="floating-badge__label">CYBERWARE</span>
+              <span class="floating-badge__val">Sandevistan MK.IV</span>
+            </div>
+          </div>
+
+          <!-- Orbiting Floating Badge 3 (Bottom Left) -->
+          <div class="floating-badge floating-badge--3" id="floatBadge3">
+            <div class="floating-badge__icon floating-badge__icon--cyan">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <div class="floating-badge__text">
+              <span class="floating-badge__label">GIG // DEPLOYED</span>
+              <span class="floating-badge__val">SIPARDIS Ciamis</span>
+            </div>
+          </div>
+
+          <!-- Main Holographic Card with Sandevistan Telemetry -->
+          <div class="character-card" id="characterCard" title="Klik kartu untuk memicu Sandevistan Overdrive!">
+            
+            <!-- Sandevistan Chromatic Ghost Trails (Edgerunners Speed Silhouettes) -->
+            <div class="sande-ghost sande-ghost--cyan" aria-hidden="true"></div>
+            <div class="sande-ghost sande-ghost--magenta" aria-hidden="true"></div>
+
+            <!-- Dynamic Neon Laser Border Beam -->
+            <div class="character-card__beam" aria-hidden="true"></div>
+
+            <!-- Energy Ambient Glow -->
+            <div class="character-card__aura" aria-hidden="true"></div>
+
+            <!-- Holographic Prismatic Foil Sheen (Reacts to cursor) -->
+            <div class="character-card__foil" aria-hidden="true"></div>
+
+            <!-- Corner HUD Brackets -->
+            <div class="hud-corner hud-corner--tl" aria-hidden="true"></div>
+            <div class="hud-corner hud-corner--tr" aria-hidden="true"></div>
+            <div class="hud-corner hud-corner--bl" aria-hidden="true"></div>
+            <div class="hud-corner hud-corner--br" aria-hidden="true"></div>
+
+            <!-- Top HUD Bar: Cyberware Telemetry & Sandevistan Badge -->
+            <div class="character-card__top-hud">
+              <div class="char-hud-tag">
+                <span class="hud-dot-pulse"></span>
+                <span class="hud-label" id="cyberTelemetry">CYBERWARE // MK.IV</span>
+              </div>
+              <div class="char-hud-rank char-hud-rank--sande" id="sandeBadge">
+                <i data-lucide="zap"></i>
+                <span id="sandeText">SANDEVISTAN</span>
+              </div>
+            </div>
+
+            <!-- Portrait Frame: Clear, Sharp, High Definition with Subtle Micro-Twitch -->
+            <div class="character-card__frame" id="charFrame">
+              <!-- Holographic subtle scanline -->
+              <div class="char-scanline" aria-hidden="true"></div>
+
+              <!-- Real Crisp HD Photo -->
+              <img id="heroPhoto" src="assets/foto-ricky.png" alt="Mochamad Ricky Araya" class="character-card__img" width="380" height="480" loading="eager" />
+              
+              <!-- Smooth Cinematic Vignette -->
+              <div class="character-card__vignette" aria-hidden="true"></div>
+
+              <!-- In-Frame Floating Nameplate -->
+              <div class="character-card__nameplate">
+                <span class="char-role">// OPERATOR STATUS: ONLINE</span>
+                <span class="char-codename">RICKY ARAYA</span>
+              </div>
+            </div>
+
+            <!-- Stats Intel Bar (Cyberpunk / Modern Dev Stats) -->
+            <div class="character-card__stats">
+              <div class="char-stat-pill">
+                <span class="char-stat-pill__key">SPEC</span>
+                <span class="char-stat-pill__val">FULL-STACK</span>
+              </div>
+              <div class="char-stat-pill">
+                <span class="char-stat-pill__key">AFFILIATION</span>
+                <span class="char-stat-pill__val">BSI CIAMIS</span>
+              </div>
+              <div class="char-stat-pill">
+                <span class="char-stat-pill__key">NEURAL SYNC</span>
+                <span class="char-stat-pill__val char-stat-pill__val--live">99.8%</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <a href="#tentang" class="hero__scroll-hint" aria-label="Scroll ke bagian Tentang">
+        <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+        <span class="scroll-text">SYSTEM_SCROLL // DOWN</span>
+      </a>
+    </section>
+
+    <!-- ===== MAIN CONTENT HUB (CYBER DECK INTERACTION & DIVERSE SECTIONS) ===== -->
+
+    <!-- Quick Navigation Deck / Dossier Switcher Tabs -->
+    <section class="cyber-deck-nav-wrapper">
+      <div class="container">
+        <div class="cyber-deck-tabs" role="tablist" aria-label="Pilihan Dossier Profil">
+          <button type="button" class="deck-tab active" data-deck-target="tentang">
+            <i data-lucide="user"></i>
+            <span>01 // BIO_DATA</span>
+          </button>
+          <button type="button" class="deck-tab" data-deck-target="skill">
+            <i data-lucide="cpu"></i>
+            <span>02 // CYBERWARE</span>
+          </button>
+          <button type="button" class="deck-tab" data-deck-target="proyek">
+            <i data-lucide="briefcase"></i>
+            <span>03 // GIG_PROJECTS</span>
+          </button>
+          <button type="button" class="deck-tab" data-deck-target="riwayat">
+            <i data-lucide="git-branch"></i>
+            <span>04 // TIMELINE</span>
+          </button>
+          <button type="button" class="deck-tab" data-deck-target="kontak">
+            <i data-lucide="radio"></i>
+            <span>05 // COMMS</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TENTANG (Bio-Data Showcase) ===== -->
+    <section class="section deck-pane" id="tentang">
+      <div class="container">
+        <div class="section__header anim-on-scroll">
+          <span class="section__badge">// SEC_01: BIO_DATA</span>
+          <h2 class="section__title" id="aboutTitle">Tentang Saya</h2>
+          <p class="section__subtitle" id="aboutSubtitle"></p>
+        </div>
+        <div class="about__content anim-on-scroll" id="aboutContent"></div>
+      </div>
+    </section>
+
+    <!-- ===== SKILL (Cyberware Inventory Grid) ===== -->
+    <section class="section section--alt deck-pane" id="skill">
+      <div class="container">
+        <div class="section__header anim-on-scroll">
+          <span class="section__badge">// SEC_02: CYBERWARE_INVENTORY</span>
+          <h2 class="section__title" id="skillTitle">Keahlian & Teknologi</h2>
+          <p class="section__subtitle" id="skillSubtitle"></p>
+        </div>
+        <div class="skills__filter anim-on-scroll" id="skillFilter"></div>
+        <div class="skills__grid" id="skillGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===== PROYEK (Clean, Elegant, Ultra-Polished Cards) ===== -->
+    <section class="section deck-pane" id="proyek">
+      <div class="container">
+        <div class="section__header anim-on-scroll">
+          <span class="section__badge">// SEC_03: GIG_DATABASE</span>
+          <h2 class="section__title" id="projectTitle">Proyek Pilihan</h2>
+          <p class="section__subtitle" id="projectSubtitle"></p>
+        </div>
+
+        <div class="projects__grid" id="projectGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===== RIWAYAT: PENGALAMAN & PENDIDIKAN DUAL-COLUMN SPLIT ===== -->
+    <section class="section section--alt deck-pane" id="riwayat">
+      <div class="container">
+        <div class="section__header anim-on-scroll">
+          <span class="section__badge">// SEC_04: SERVICE_RECORDS</span>
+          <h2 class="section__title">Pengalaman & Pendidikan</h2>
+          <p class="section__subtitle">Rekam jejak praktis operasional lapangan dan fondasi akademis formal.</p>
+        </div>
+
+        <div class="dual-timeline-split">
+          <!-- Left: Experience -->
+          <div class="dual-timeline-col anim-on-scroll">
+            <div class="col-header">
+              <span class="col-header__icon"><i data-lucide="briefcase"></i></span>
+              <h3 class="col-header__title" id="expTitle">Pengalaman Kerja & PKL</h3>
+            </div>
+            <div class="timeline" id="expTimeline"></div>
+          </div>
+
+          <!-- Right: Education -->
+          <div class="dual-timeline-col anim-on-scroll">
+            <div class="col-header col-header--edu">
+              <span class="col-header__icon"><i data-lucide="graduation-cap"></i></span>
+              <h3 class="col-header__title" id="eduTitle">Riwayat Pendidikan</h3>
+            </div>
+            <div class="timeline" id="eduTimeline"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERTIFIKAT (Opsional) ===== -->
+    <section class="section deck-pane" id="sertifikat" style="display:none">
+      <div class="container">
+        <div class="section__header anim-on-scroll">
+          <span class="section__badge">// SEC_05: CREDENTIALS</span>
+          <h2 class="section__title" id="certTitle">Sertifikasi & Pelatihan</h2>
+        </div>
+        <div class="cert__grid" id="certGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===== KONTAK (Comms Terminal Uplink) ===== -->
+    <section class="section section--alt deck-pane" id="kontak">
+      <div class="container">
+        <div class="contact__banner anim-on-scroll">
+          <div class="section__header">
+            <span class="section__badge">// SEC_06: HOLO_COMMS_UPLINK</span>
+            <h2 class="section__title" id="contactTitle">Mari Terhubung</h2>
+            <p class="section__subtitle" id="contactSubtitle"></p>
+          </div>
+          <div class="contact__links" id="contactLinks"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <!-- Dirender secara dinamis oleh JS -->
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

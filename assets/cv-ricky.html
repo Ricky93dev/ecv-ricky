@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum Vitae — Mochamad Ricky Araya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #334155;
+      --muted: #64748b;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --border: #e2e8f0;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --tag-bg: #eff6ff;
+      --tag-text: #1e40af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--secondary);
+      background-color: #f1f5f9;
+      line-height: 1.55;
+      font-size: 13.5px;
+      -webkit-font-smoothing: antialiased;
+      padding: 24px;
+    }
+
+    .cv-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--bg);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* Print action bar */
+    .action-bar {
+      position: sticky;
+      top: 12px;
+      z-index: 100;
+      max-width: 860px;
+      margin: 0 auto 16px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+    }
+
+    .action-bar span {
+      font-size: 13px;
+      font-weight: 500;
+      color: #cbd5e1;
+    }
+
+    .btn-print {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .btn-print:hover {
+      background: #1d4ed8;
+    }
+
+    /* CV Header */
+    .cv-header {
+      padding: 36px 40px 28px 40px;
+      border-bottom: 2px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      background: linear-gradient(to right, #ffffff, #f8fafc);
+    }
+
+    .cv-header__left {
+      flex: 1;
+    }
+
+    .cv-name {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .cv-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .cv-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    .cv-contacts a, .cv-contacts span {
+      color: var(--secondary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .cv-contacts a:hover {
+      color: var(--accent);
+    }
+
+    .cv-photo {
+      width: 105px;
+      height: 125px;
+      border-radius: 8px;
+      object-fit: cover;
+      object-position: center 15%;
+      border: 2px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      flex-shrink: 0;
+    }
+
+    /* CV Body Layout */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 2.2fr 1.3fr;
+      padding: 32px 40px;
+      gap: 36px;
+    }
+
+    .section-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Summary */
+    .summary-text {
+      color: var(--secondary);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      text-align: justify;
+    }
+
+    /* Experience & Projects */
+    .cv-block {
+      margin-bottom: 20px;
+    }
+
+    .cv-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .cv-block__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+
+    .cv-block__title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .cv-block__period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .cv-block__sub {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+    }
+
+    .cv-block__desc {
+      font-size: 12.5px;
+      color: var(--secondary);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .cv-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .cv-list li {
+      position: relative;
+      padding-left: 15px;
+      font-size: 12.5px;
+      line-height: 1.55;
+      margin-bottom: 4px;
+      color: var(--secondary);
+    }
+
+    .cv-list li::before {
+      content: '•';
+      position: absolute;
+      left: 2px;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid #dbeafe;
+    }
+
+    /* Skills Sidebar */
+    .skill-category {
+      margin-bottom: 14px;
+    }
+
+    .skill-category__name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-item {
+      font-size: 12px;
+      padding: 4px 9px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .skill-item.expert {
+      border-color: #93c5fd;
+      background: #eff6ff;
+      color: #1e40af;
+    }
+
+    /* Education items */
+    .edu-item {
+      margin-bottom: 14px;
+    }
+
+    .edu-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-degree {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .edu-school {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin-bottom: 2px;
+    }
+
+    .edu-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .edu-desc {
+      font-size: 12px;
+      color: var(--secondary);
+      line-height: 1.5;
+    }
+
+    /* Print Media Query */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+        font-size: 12.5px;
+      }
+
+      .action-bar {
+        display: none !important;
+      }
+
+      .cv-wrapper {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        max-width: 100%;
+      }
+
+      .cv-header {
+        padding: 24px 30px 18px 30px;
+      }
+
+      .cv-body {
+        padding: 20px 30px;
+        gap: 28px;
+      }
+
+      @page {
+        margin: 10mm;
+        size: A4 portrait;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .cv-header {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        padding: 24px;
+      }
+
+      .cv-photo {
+        width: 90px;
+        height: 110px;
+      }
+
+      .cv-body {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Bar (Hidden on Print/PDF) -->
+  <div class="action-bar">
+    <span>💡 <strong>Curriculum Vitae Siap Cetak & PDF</strong> (Format A4 Standar)</span>
+    <button type="button" class="btn-print" onclick="window.print()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+      Cetak / Simpan PDF
+    </button>
+  </div>
+
+  <div class="cv-wrapper">
+    <!-- Header -->
+    <header class="cv-header">
+      <div class="cv-header__left">
+        <h1 class="cv-name">Mochamad Ricky Araya</h1>
+        <div class="cv-title">Information Systems Student • Full-Stack Web Developer</div>
+        <div class="cv-contacts">
+          <span>📍 Jatinagara, Kab. Ciamis, Jawa Barat</span>
+          <a href="mailto:rickyaraya93@gmail.com">✉️ rickyaraya93@gmail.com</a>
+          <a href="https://wa.me/6281234567890">📱 +62 812-3456-7890 (WhatsApp)</a>
+          <a href="https://github.com/repos" target="_blank">🔗 github.com/repos</a>
+          <a href="https://www.instagram.com/rickyaraya93" target="_blank">📷 @rickyaraya93</a>
+        </div>
+      </div>
+      <img src="foto-ricky.png" alt="Mochamad Ricky Araya" class="cv-photo">
+    </header>
+
+    <!-- Content Body -->
+    <main class="cv-body">
+      <!-- Left Column: Summary, Experience, Projects -->
+      <div class="cv-col-main">
+        <!-- Summary -->
+        <section class="cv-section">
+          <h2 class="section-title">Ringkasan Profesional</h2>
+          <p class="summary-text">
+            Mahasiswa program studi Sistem Informasi Universitas Bina Sarana Informatika (BSI) dengan fokus spesialisasi pada rekayasa perangkat lunak web modern. Memiliki keahlian teruji dalam pengembangan Full-Stack (Laravel, PHP, MySQL, Tailwind CSS) dan mobile development dasar (Flutter). Berpengalaman nyata menyelesaikan sistem informasi terpusat skala instansi pemerintahan daerah melalui program PKL di Dinas Pariwisata Kabupaten Ciamis. Memiliki motivasi tinggi, adaptif terhadap teknologi baru, serta berorientasi pada pemecahan masalah fungsional instansi dan industri digital.
+          </p>
+        </section>
+
+        <!-- Experience -->
+        <section class="cv-section">
+          <h2 class="section-title">Pengalaman Kerja & PKL</h2>
+          <div class="cv-block">
+            <div class="cv-block__header">
+              <span class="cv-block__title">Web Developer (Full-Stack) — PKL</span>
+              <span class="cv-block__period">Agt 2026 – Nov 2026</span>
+            </div>
+            <div class="cv-block__sub">Dinas Pariwisata Kabupaten Ciamis • On-site</div>
+            <ul class="cv-list">
+              <li>Merancang dan membangun aplikasi sistem informasi terpusat <strong>SIPARDIS</strong> untuk memodernisasi tata kelola administrasi kedinasan.</li>
+              <li>Mengembangkan modul pelaporan kinerja, pemantauan realisasi anggaran & PAD, kepegawaian, arsip dokumen, serta agenda rapat terintegrasi.</li>
+              <li>Merancang basis data relasional MySQL, mengimplementasikan backend Laravel yang aman dengan sistem autentikasi multi-peran, dan membangun UI responsif dengan Tailwind CSS.</li>
+              <li>Melakukan pengujian fungsi sistem dan deployment aplikasi ke lingkungan server lokal dinas.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="cv-section" style="margin-top: 18px;">
+          <h2 class="section-title">Proyek Unggulan</h2>
+          
+          <div class="cv-block">
+            <div class="cv-block__header">
+              <span class="cv-block__title">SIPARDIS — Sistem Informasi Terpadu Dinas Pariwisata</span>
+            </div>
+            <div class="cv-block__desc">
+              Sistem informasi manajemen kedinasan terpadu untuk Dinas Pariwisata Kabupaten Ciamis yang menangani alur data kinerja pegawai, statistik anggaran pendapatan asli daerah (PAD), arsip dokumen resmi, dan reservasi agenda rapat dinas.
+            </div>
+            <div class="tags">
+              <span class="tag">Laravel</span>
+              <span class="tag">PHP</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <div class="cv-block__header">
+              <span class="cv-block__title">Pharmacast — Sistem Manajemen Tugas & Pusat Data Internal</span>
+            </div>
+            <div class="cv-block__desc">
+              Aplikasi berbasis web untuk otomasi alur tugas operasional dan pusat arsip data internal terstruktur dengan navigasi cepat, sistem filtering terpadu, dan manajemen hak akses pengguna.
+            </div>
+            <div class="tags">
+              <span class="tag">Laravel</span>
+              <span class="tag">PHP</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <div class="cv-block__header">
+              <span class="cv-block__title">AbsenQR — Aplikasi Presensi Cepat Berbasis QR Code</span>
+            </div>
+            <div class="cv-block__desc">
+              Aplikasi mobile presensi cepat dengan pemindaian kode QR responsif, validasi waktu presensi secara akurat, dan sinkronisasi data kehadiran langsung ke database cloud.
+            </div>
+            <div class="tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">Firebase</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column: Skills, Education, Competencies -->
+      <div class="cv-col-side">
+        <!-- Education -->
+        <section class="cv-section" style="margin-bottom: 24px;">
+          <h2 class="section-title">Pendidikan Formal</h2>
+          
+          <div class="edu-item">
+            <div class="edu-degree">Sistem Informasi (D3 / S1)</div>
+            <div class="edu-school">Universitas Bina Sarana Informatika</div>
+            <div class="edu-period">2024 – Sekarang</div>
+            <p class="edu-desc">Fokus pada Analisis & Perancangan Sistem, Basis Data, Pemrograman Berorientasi Objek, dan Rekayasa Perangkat Lunak Web.</p>
+          </div>
+
+          <div class="edu-item" style="margin-top: 14px;">
+            <div class="edu-degree">Teknik Komputer & Jaringan (TKJ)</div>
+            <div class="edu-school">SMKN 1 Rajadesa</div>
+            <div class="edu-period">2021 – 2024</div>
+            <p class="edu-desc">Mendalami arsitektur komputer, administrasi server jaringan, routing LAN/WAN, dan logika pemrograman dasar.</p>
+          </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="cv-section" style="margin-bottom: 24px;">
+          <h2 class="section-title">Keahlian Teknis</h2>
+          
+          <div class="skill-category">
+            <div class="skill-category__name">Backend & Database</div>
+            <div class="skill-badges">
+              <span class="skill-item expert">Laravel</span>
+              <span class="skill-item expert">PHP</span>
+              <span class="skill-item expert">MySQL</span>
+              <span class="skill-item">Firebase</span>
+              <span class="skill-item">RESTful API</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category__name">Frontend & UI/UX</div>
+            <div class="skill-badges">
+              <span class="skill-item expert">Tailwind CSS</span>
+              <span class="skill-item expert">HTML5 & CSS3</span>
+              <span class="skill-item expert">JavaScript</span>
+              <span class="skill-item">Responsive Design</span>
+              <span class="skill-item">Figma</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category__name">Mobile & Tools</div>
+            <div class="skill-badges">
+              <span class="skill-item">Flutter & Dart</span>
+              <span class="skill-item expert">Git & GitHub</span>
+              <span class="skill-item">Jaringan Komputer</span>
+              <span class="skill-item">VS Code</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Soft Skills & Languages -->
+        <section class="cv-section">
+          <h2 class="section-title">Kompetensi & Bahasa</h2>
+          <div class="skill-badges">
+            <span class="skill-item">Problem Solving</span>
+            <span class="skill-item">Analisis Kebutuhan Sistem</span>
+            <span class="skill-item">Kerja Sama Tim</span>
+            <span class="skill-item">Komunikasi Teknis</span>
+            <span class="skill-item">Bahasa Indonesia (Native)</span>
+            <span class="skill-item">Bahasa Inggris (Pasif/Teknis)</span>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
